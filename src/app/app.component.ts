@@ -5,6 +5,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { DxDataGridModule } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
+import { normalizeFilter } from './filter-normalizer';
 
 
 @Component({
@@ -28,6 +29,9 @@ export class AppComponent {
                     if(loadOptions.sort[0].desc) {
                         params += ' desc';
                     }
+                }
+                if(loadOptions.filter){
+                  normalizeFilter(loadOptions.filter);
                 }
                 return httpClient.get('https://js.devexpress.com/Demos/WidgetsGallery/data/orderItems' + params)
                     .toPromise()
