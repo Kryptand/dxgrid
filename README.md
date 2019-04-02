@@ -1,2 +1,0 @@
-# dxgrid
-Created with CodeSandbox
